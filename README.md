@@ -1,4 +1,4 @@
-# Repositório dos meus estudos sobre react js
+# Repositório do meu projeto final da matéria de construção de frontend
 
 ## Rodar o projeto 
 > Clonar repositório: git clone https://github.com/JoaoLeo/Cadastro-RPG.git <br>
