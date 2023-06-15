@@ -1,9 +1,10 @@
 import Header from '@/components/Header'
 import GlobalStyle from '@/styles/globalStyle'
+import styleCard from '@/styles/styleCard'
 import styleForm from '@/styles/styleForm'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Table } from 'react-bootstrap'
+import { Button, Card, Container, Table } from 'react-bootstrap'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsFillGearFill, BsTrashFill } from 'react-icons/bs'
 import { TbFeather, TbTrashFilled}  from 'react-icons/tb'
@@ -37,38 +38,21 @@ const index = () => {
                 Criar classe
             </Button>
             </Link>
-            <Table variant="secondary" className='text-light'>
-                <thead>
-                    <tr>                   
-                        <th> <BsFillGearFill/> </th>    
-                        <th>Nome</th>
-                        <th>Poder Principal</th>
-                        <th>Tipo de combate</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                {classes.map((p,index) =>(
-		            <tr key={index}>
-                        <td>
-                        <Link href={'/classes/' + index}>
-                            <TbFeather className='text-secondary' /> 
-                        </Link>
-                        <TbTrashFilled onClick={() => excluir(index)} className="text-danger me-2"/> 
-                        </td>
-                        <td>
-                            {p.nome}
-                        </td>
-                        <td>
-                            {p.poder}
-                        </td>
-                        <td>
-                            {p.combate}
-                        </td> 
-                    </tr>
+
+                {classes.map((c,index) =>(
+		           <Card style={styleCard}>     
+                   <Card.Header as="h5"> {c.nome} </Card.Header>
+                   <Card.Body>
+                   <Card.Title>  Poder Principal: {c.poder} </Card.Title>
+                   <Card.Title>  Tipo de combate: {c.combate}</Card.Title>
+                   <Link href={'/classes/' + index}>
+                           <TbFeather size={30} className='text-light' /> 
+                       </Link>
+                       <TbTrashFilled size={30} onClick={() => excluir(index)} className="text-danger me-2"/> 
+                     </Card.Body>
+                    </Card>
                 ))}
-                </tbody>
-            </Table>
+
             </Container>
         </>
 
