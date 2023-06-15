@@ -17,14 +17,16 @@ const id = () => {
   const [poderes, setPoderes] = useState([])
 
   useEffect(() => {
+    const data = JSON.parse(window.localStorage.getItem('poderes')) || [] ; 
+    setPoderes(data); 
     if(query.id) { 
       const classes = JSON.parse(window.localStorage.getItem('classes'))
       const classe = classes[query.id]
-      const data = JSON.parse(window.localStorage.getItem('poderes')) || [] ; 
-     setPoderes(data); 
       for(let campo in classe) {
+        console.log(campo, classe);
           setValue(campo, classe[campo])
       }
+      setValue("poder", classe[3])
   }
     
   }, [query.id]);
@@ -57,8 +59,8 @@ const id = () => {
           <Form.Label> Poder Principal </Form.Label>
           <Form.Select {...register('poder')}>
           <option value=""> Selecione um poder </option>
-                  {poderes.map(o => (
-                  <option key={o.value} value={o.value}> {o.value} </option>
+                  {poderes.map((o,i) => (
+                  <option key={i} value={o.value}> {o.descricao} </option>
                   
           ))}
           

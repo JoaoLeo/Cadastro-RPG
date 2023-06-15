@@ -49,8 +49,8 @@ const formClasses = () => {
           <Form.Label> Poder Principal </Form.Label>
           <Form.Select {...register('poder')}>
           <option value=""> Selecione um poder </option>
-                  {poderes.map(o => (
-                  <option key={o.value} value={o.value}> {o.value} </option>
+                  {poderes.map((o,i) => (
+                  <option key={i} value={o.value}> {o.descricao} </option>
                   
           ))}
           

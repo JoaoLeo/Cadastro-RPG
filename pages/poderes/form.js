@@ -16,10 +16,13 @@ const formPoderes = () => {
   const { register, handleSubmit, formState : { errors }, setValue } = useForm();
   const [poderes, setPoderes] = useState([])
   const [valorDano, setValorDano] = useState(50)
+
   useEffect(() => {
     const data = JSON.parse(window.localStorage.getItem('poderes')) || [] ; 
     setPoderes(data); 
   }, []);
+
+  const handleRangeChange = (event) => { setValorDano(event.target.value); };
 
   function salvar(dados) {
     console.log(dados);
@@ -52,20 +55,23 @@ const formPoderes = () => {
                 <option key={"fogo"} value={"Fogo"}> Fogo </option>
                 <option key={"agua"} value={"Água"}> Água </option>
                 <option key={"raio"} value={"Raio"}> Raio </option>
-                <option key={"raio"} value={"Lâminas"}> Lâminas </option>
-                <option key={"raio"} value={"Veneno"}> Veneno </option>
+                <option key={"laminas"} value={"Lâminas"}> Lâminas </option>
+                <option key={"veneno"} value={"Veneno"}> Veneno </option>
           </Form.Select>
           </Form.Group>
         <Form.Group className="py-2 px-3" controlId="dano">
-          <Form.Label> Nível de dano </Form.Label>
-          <Form.Range {...register(valorDano)} 
+          <Form.Label> Nível de dano: </Form.Label>
+          <Form.Text style={{color: '#8B0000', fontSize:'22px', fontWeight: 'bolder'}}> {valorDano} </Form.Text>
+          <Form.Range {...register('dano')}
           value={valorDano}
-          onChange={()=>{
-            setValorDano(valorDano)
-          }}>
+          onChange={handleRangeChange}
+          min={0}
+          max={100}
+          variant="danger"
+          >
 
           </Form.Range>
-          <Form.Text> {valorDano} </Form.Text>
+          
         </Form.Group>
 
         
