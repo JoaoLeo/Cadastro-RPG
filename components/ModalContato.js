@@ -22,7 +22,7 @@ const ModalContato = () => {
           setContatos(contatos)
           handleShow()
         }}>
-          <Button bg="light" variant="secondary"> <IoMdContact/> Dev: João Leonardo</Button>
+          <Button style={{backgroundColor: "#708090", color:"black"}}> <IoMdContact/> Dev: João Leonardo</Button>
         </span>
 
         <Modal show={show} onHide={handleClose}>
