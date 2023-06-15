@@ -43,7 +43,7 @@ const formPoderes = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="descricao">
           <Form.Label>Descrição</Form.Label>
-          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('descricao', geralValidator.nome)}/>
+          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o a descrição do poder" {...register('descricao', geralValidator.nome)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
 
