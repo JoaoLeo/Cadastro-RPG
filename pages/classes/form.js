@@ -47,14 +47,14 @@ const formClasses = () => {
        
         <Form.Group className="py-2 px-3" controlId="poder">
           <Form.Label> Poder Principal </Form.Label>
-          <Form.Select isInvalid={errors.poder} {...register('poder',geralValidator.notNull)}>
-          { errors.poder && <p className='mt-1 text-light'> {errors.poder.message} </p> } 
+          <Form.Select isInvalid={errors.poder} {...register('poder',geralValidator.notNull)}>         
           <option value=""> Selecione um poder </option>
                   {poderes.map((o,i) => (
                   <option key={i} value={o.descricao}> {o.descricao} </option>         
           ))}
           
           </Form.Select>
+          { errors.poder && <p className='mt-1 text-light'> {errors.poder.message} </p> } 
           <Link href="/poderes/form" className='mb-2' > 
           <Button type="button" style={styleForm.buttonPlus}  className='mt-2'> 
             <AiOutlinePlus/>
@@ -65,13 +65,13 @@ const formClasses = () => {
 
         <Form.Group className="py-2 px-3" controlId="combate">
           <Form.Label> Tipo de combate </Form.Label>
-          <Form.Select isInvalid={errors.combate} {...register('combate', geralValidator.notNull)}>
-          { errors.combate && <p className='mt-1 text-light'> {errors.combate.message} </p> }
+          <Form.Select isInvalid={errors.combate} {...register('combate', geralValidator.notNull)}>      
           <option value=""> Selecione o tipo de combate </option>
                 <option key={"fisico"} value={"Físico"}> Físico </option>
                 <option key={"magico"} value={"Mágico"}> Mágico </option>
                 <option key={"furtivo"} value={"Furtivo"}> Furtivo </option>
           </Form.Select>
+          { errors.combate && <p className='mt-1 text-light'> {errors.combate.message} </p> }
         </Form.Group>
     
         <div className='text-center me-2 py-3'>
