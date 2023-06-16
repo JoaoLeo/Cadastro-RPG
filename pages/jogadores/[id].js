@@ -51,7 +51,7 @@ const id = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="nome">
           <Form.Label>Nome</Form.Label>
-          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.nome)}/>
+          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.notNull)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
 
@@ -65,7 +65,7 @@ const id = () => {
 
         <Form.Group className="py-2 px-3" controlId="email">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="stannis@gmail.com" {...register('email', geralValidator.nome)}/>
+          <Form.Control type="email" placeholder="stannis@gmail.com" {...register('email', geralValidator.notNull)}/>
         </Form.Group>
 
         <Form.Group className="py-2 px-3" controlId="cpf">
@@ -73,7 +73,7 @@ const id = () => {
           <Form.Control 
           type="text" 
           placeholder="xxx.xxx.xxx-xx" 
-          {...register('cpf', geralValidator.nome)}
+          {...register('cpf', geralValidator.notNull)}
           mask="999.999.999-99"
           onChange={handleChange}/>
         </Form.Group>
@@ -82,7 +82,7 @@ const id = () => {
           <Form.Label>Telefone</Form.Label>
           <Form.Control type="tel" 
           placeholder="(xx)xxxxx-xxxx" 
-          {...register('telefone', geralValidator.nome)}
+          {...register('telefone', geralValidator.notNull)}
           mask={'(99)99999-9999'}
           onChange={handleChange}
            />
@@ -90,7 +90,7 @@ const id = () => {
 
         <Form.Group className="py-2 px-3" controlId="classFav">
           <Form.Label> Classe favorita </Form.Label>
-          <Form.Select {...register('classFav')}>
+          <Form.Select {...register('classFav', geralValidator.notNull)}>
           <option value=""> Selecione sua classe favorita</option>
                   {classes.map((c,i) => (
                   <option key={i} value={c.value}> {c.nome} </option>

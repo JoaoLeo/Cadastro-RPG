@@ -22,7 +22,7 @@ const id = () => {
     if(query.id) { 
       const classes = JSON.parse(window.localStorage.getItem('classes'))
       const classe = classes[query.id]
-      for(let campo in classe) { setValue(campo, classe[campo]) }
+      for(let campo in classe) { setValue(campo, classe[campo])}
   }
     
   }, [query.id]);

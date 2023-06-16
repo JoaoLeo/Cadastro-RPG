@@ -54,7 +54,7 @@ const id = () => {
     <Form>
     <Form.Group className="py-2 px-3" controlId="jogador">
           <Form.Label> Jogador </Form.Label>
-          <Form.Select {...register('jogador')}>
+          <Form.Select {...register('jogador', geralValidator.notNull)}>
           <option value=""> Selecione quem vai jogar com esse personagm </option>
                   {jogadores.map((j,i) => (
                   <option key={i} value={j.nome}> {j.nome} </option>               
@@ -74,13 +74,13 @@ const id = () => {
     
         <Form.Group className="py-2 px-3" controlId="nome">
           <Form.Label>Nome</Form.Label>
-          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome do personagem" {...register('nome', geralValidator.nome)}/>
+          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome do personagem" {...register('nome', geralValidator.notNull)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
 
         <Form.Group className="py-2 px-3" controlId="classFav">
           <Form.Label> Raça do personagem </Form.Label>
-          <Form.Select {...register('raca', geralValidator.nome)}>
+          <Form.Select {...register('raca', geralValidator.notNull)}>
           <option value=""> Selecione a raça do personagem </option>
                 <option key={1} value={"Humano"}> Humano </option>     
                 <option key={2} value={"Elfo"}>  Elfo </option>   
@@ -93,7 +93,7 @@ const id = () => {
 
         <Form.Group className="py-2 px-3" controlId="classFav">
           <Form.Label> Alinhamento Moral </Form.Label>
-          <Form.Select {...register('alinhamento', geralValidator.nome)}>
+          <Form.Select {...register('alinhamento', geralValidator.notNull)}>
           <option value=""> Selecione  alinhamento do seu personagem </option>
                 <option key={1} value={"Leal e Bom"}> Leal e Bom </option>     
                 <option key={2} value={"Neutro e Bom"}>  Neutro e Bom </option>   
@@ -112,12 +112,12 @@ const id = () => {
           <Form.Control type="number"
            max={3000}
            min={0}
-           placeholder="Digite sua idade" {...register('idade', geralValidator.nome)}/>
+           placeholder="Digite sua idade" {...register('idade', geralValidator.notNull)}/>
         </Form.Group>
 
         <Form.Group className="py-2 px-3" controlId="aparencia">
           <Form.Label>Aparência Física</Form.Label>
-          <Form.Control type="text" placeholder="Descreva a aparência do seu personagem "  {...register('aparencia', geralValidator.nome)}/>
+          <Form.Control type="text" placeholder="Descreva a aparência do seu personagem "  {...register('aparencia', geralValidator.notNull)}/>
         </Form.Group>
 
         <Form.Group className="py-2 px-3" controlId="historia">

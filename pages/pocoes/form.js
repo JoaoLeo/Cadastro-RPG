@@ -34,7 +34,7 @@ const formPocoes = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="tipo">
           <Form.Label> Escolha o tipo da poção </Form.Label>
-          <Form.Select {...register('tipo', geralValidator.nome)}>
+          <Form.Select {...register('tipo', geralValidator.notNull)}>
           <option value=""> Selecione o tipo da poção </option>
           <option key={1} value={"Envenenamento"}> Envenenamento </option>   
           <option key={2} value={"Paralizante"}> Paralizante </option>     
@@ -45,12 +45,12 @@ const formPocoes = () => {
        
         <Form.Group className="py-2 px-3" controlId="qtd">
           <Form.Label>Quantidade</Form.Label>
-          <Form.Control type="number" placeholder="Digite a quantidade de poções que deseja " {...register('qtd', geralValidator.nome)}/>
+          <Form.Control type="number" placeholder="Digite a quantidade de poções que deseja " {...register('qtd', geralValidator.notNull)}/>
         </Form.Group>
         
         <Form.Group className="py-2 px-3" controlId="perigo">
           <Form.Label> Nível de perigo</Form.Label>
-          <Form.Select {...register('perigo', geralValidator.nome)}>
+          <Form.Select {...register('perigo', geralValidator.notNull)}>
           <option value=""> Selecione o nível de perigo da poção</option>
                 <option key={"inofensivo"} value={"Inofensivo"}> Inofensivo </option>
                 <option key={"mediano"} value={"Mediano"}> Mediano </option>

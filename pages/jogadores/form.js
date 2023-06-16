@@ -41,7 +41,7 @@ const formJogadores = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="nome">
           <Form.Label>Nome</Form.Label>
-          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.nome)}/>
+          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.notNull)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
 
@@ -50,12 +50,12 @@ const formJogadores = () => {
           <Form.Control type="number"
            max={100}
            min={1}
-           placeholder="Digite sua idade" {...register('idade', geralValidator.nome)}/>
+           placeholder="Digite sua idade" {...register('idade', geralValidator.notNull)}/>
         </Form.Group>
 
         <Form.Group className="py-2 px-3" controlId="email">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="stannis@gmail.com" {...register('email', geralValidator.nome)}/>
+          <Form.Control type="email" placeholder="stannis@gmail.com" {...register('email', geralValidator.notNull)}/>
         </Form.Group>
 
         <Form.Group className="py-2 px-3" controlId="cpf">
@@ -63,7 +63,7 @@ const formJogadores = () => {
           <Form.Control 
           type="text" 
           placeholder="xxx.xxx.xxx-xx" 
-          {...register('cpf', geralValidator.nome)}
+          {...register('cpf', geralValidator.notNull)}
           onChange={handleChange}
           mask="999.999.999-99"/>
         </Form.Group>
@@ -72,7 +72,7 @@ const formJogadores = () => {
           <Form.Label>Telefone</Form.Label>
           <Form.Control type="tel" 
           placeholder="(xx)xxxxx-xxxx" 
-          {...register('telefone', geralValidator.nome)}
+          {...register('telefone', geralValidator.notNull)}
           mask={'(99)99999-9999'}
           onChange={handleChange}
            />
@@ -80,7 +80,7 @@ const formJogadores = () => {
 
         <Form.Group className="py-2 px-3" controlId="classFav">
           <Form.Label> Classe favorita </Form.Label>
-          <Form.Select {...register('classFav')}>
+          <Form.Select {...register('classFav',geralValidator.notNull)}>
           <option value=""> Selecione sua classe favorita</option>
                   {classes.map((c,i) => (
                   <option key={i} value={c.value}> {c.nome} </option>               
