@@ -34,9 +34,9 @@ const formPocoes = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="tipo">
           <Form.Label> Escolha o tipo da poção </Form.Label>
-          <Form.Select {...register('tipo')}>
+          <Form.Select {...register('tipo', geralValidator.nome)}>
           <option value=""> Selecione o tipo da poção </option>
-          <option key={1} value={"Envenenemento"}> Envenenemento </option>   
+          <option key={1} value={"Envenenamento"}> Envenenamento </option>   
           <option key={2} value={"Paralizante"}> Paralizante </option>     
           <option key={3} value={"Sonífera"}> Sonífera </option>           
           </Form.Select>

@@ -1,9 +1,10 @@
 import Header from '@/components/Header'
 import GlobalStyle from '@/styles/globalStyle'
+import styleCard from '@/styles/styleCard'
 import styleForm from '@/styles/styleForm'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Table } from 'react-bootstrap'
+import { Button, Card, Container, Table } from 'react-bootstrap'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsFillGearFill, BsTrashFill } from 'react-icons/bs'
 import { TbFeather, TbTrashFilled}  from 'react-icons/tb'
@@ -37,49 +38,24 @@ const index = () => {
                 Criar novo jogador
             </Button>
             </Link>
-            <Table variant="secondary" className='text-light'>
-                <thead>
-                    <tr>                   
-                        <th> <BsFillGearFill/> </th>    
-                        <th>Nome</th>
-                        <th>Idade</th>
-                        <th>Email</th>
-                        <th>CPF</th>
-                        <th>Telefone</th>
-                        <th>Classe Favorita</th>
-                    </tr>
-                </thead>
-                <tbody>
+
                 {jogadores.map((j,index) =>(
-		            <tr key={index}>
-                        <td>
-                        <Link href={'/jogadores/' + index}>
-                            <TbFeather className='text-secondary' /> 
-                        </Link>
-                        <TbTrashFilled onClick={() => excluir(index)} className="text-danger me-2"/> 
-                        </td>
-                        <td>
-                            {j.nome}
-                        </td>
-                        <td>
-                            {j.idade}
-                        </td>
-                        <td>
-                            {j.email}
-                        </td> 
-                        <td>
-                            {j.cpf}
-                        </td> 
-                        <td>
-                            {j.telefone}
-                        </td> 
-                        <td>
-                            {j.classFav}
-                        </td> 
-                    </tr>
-                ))}
-                </tbody>
-            </Table>
+		           <Card style={styleCard}>     
+                   <Card.Header as="h5">  {j.nome} </Card.Header>
+                   <Card.Body>
+                   <Card.Title> Idade: {j.idade}</Card.Title>
+                   <Card.Title> Email: {j.email} </Card.Title>
+                   <Card.Title> CPF: {j.cpf} </Card.Title>
+                   <Card.Title> Telefone:  {j.telefone} </Card.Title>
+                   <Card.Title> Classe Favorita: {j.classFav}</Card.Title>
+                   <Link href={'/jogadores/' + index}>
+                     <TbFeather size={25} className='text-light' /> 
+                     </Link>
+                     <TbTrashFilled size={25} onClick={() => excluir(index)} className="text-danger me-2"/> 
+                     </Card.Body>
+                    </Card> 		          
+                      ))}
+
             </Container>
         </>
 

@@ -1,9 +1,10 @@
 import Header from '@/components/Header'
 import GlobalStyle from '@/styles/globalStyle'
+import styleCard from '@/styles/styleCard'
 import styleForm from '@/styles/styleForm'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Table } from 'react-bootstrap'
+import { Button, Card, Container, Table } from 'react-bootstrap'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsFillGearFill } from 'react-icons/bs'
 import { TbFeather, TbTrashFilled } from 'react-icons/tb'
@@ -37,38 +38,19 @@ const index = () => {
                 Criar poder
             </Button>
             </Link>
-            <Table variant="secondary" className='text-light'>
-                <thead>
-                    <tr>                   
-                        <th> <BsFillGearFill/> </th>    
-                        <th>Descrição</th>
-                        <th>Elemento</th>
-                        <th>Dano</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
                 {poderes.map((p,index) =>(
-		            <tr key={index}>
-                        <td>
-                        <Link href={'/poderes/' + index}>
-                            <TbFeather className='text-secondary' /> 
+		            <Card style={styleCard}>     
+                    <Card.Header as="h5"> {p.descricao}</Card.Header>
+                    <Card.Body>
+                    <Card.Title> Elemento: {p.elemento} </Card.Title>
+                    <Card.Title> Dano: {p.dano} </Card.Title>
+                    <Link href={'/poderes/' + index}>
+                            <TbFeather size={25} className='text-light' /> 
                         </Link>
-                        <TbTrashFilled onClick={() => excluir(index)} className="text-danger me-2"/> 
-                        </td>
-                        <td>
-                            {p.descricao}
-                        </td>
-                        <td>
-                            {p.elemento}
-                        </td>
-                        <td>
-                            {p.dano}
-                        </td> 
-                    </tr>
+                        <TbTrashFilled size={25} onClick={() => excluir(index)} className="text-danger me-2"/>
+                      </Card.Body>
+                     </Card>
                 ))}
-                </tbody>
-            </Table>
             </Container>
     </>
   )

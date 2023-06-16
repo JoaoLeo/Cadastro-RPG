@@ -46,9 +46,9 @@ const index = () => {
                    <Card.Title>  Poder Principal: {c.poder} </Card.Title>
                    <Card.Title>  Tipo de combate: {c.combate}</Card.Title>
                    <Link href={'/classes/' + index}>
-                           <TbFeather size={30} className='text-light' /> 
+                           <TbFeather size={25} className='text-light' /> 
                        </Link>
-                       <TbTrashFilled size={30} onClick={() => excluir(index)} className="text-danger me-2"/> 
+                       <TbTrashFilled size={25} onClick={() => excluir(index)} className="text-danger me-2"/> 
                      </Card.Body>
                     </Card>
                 ))}
