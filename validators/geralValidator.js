@@ -1,6 +1,6 @@
 const geralValidator = {
-    nome: {
-        required:"Insira um nome"
+    notNull: {
+        required:"Preencha o campo"
     }
 }
 

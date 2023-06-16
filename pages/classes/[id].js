@@ -22,11 +22,7 @@ const id = () => {
     if(query.id) { 
       const classes = JSON.parse(window.localStorage.getItem('classes'))
       const classe = classes[query.id]
-      for(let campo in classe) {
-        console.log(campo, classe);
-          setValue(campo, classe[campo])
-      }
-      setValue("poder", classe[3])
+      for(let campo in classe) { setValue(campo, classe[campo]) }
   }
     
   }, [query.id]);
@@ -50,18 +46,18 @@ const id = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="nome">
           <Form.Label>Nome da Classe</Form.Label>
-          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.nome)}/>
-          { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
+          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.notNull)}/>
+          { errors.nome && <p className='mt-1 text-light'> {errors.nome.message} </p> } 
         </Form.Group>
 
        
         <Form.Group className="py-2 px-3" controlId="poder">
           <Form.Label> Poder Principal </Form.Label>
-          <Form.Select {...register('poder')}>
+          <Form.Select isInvalid={errors.poder} {...register('poder',geralValidator.notNull)}>
+          { errors.poder && <p className='mt-1 text-light'> {errors.poder.message} </p> } 
           <option value=""> Selecione um poder </option>
                   {poderes.map((o,i) => (
-                  <option key={i} value={o.value}> {o.descricao} </option>
-                  
+                  <option key={i} value={o.value}> {o.descricao} </option>         
           ))}
           
           </Form.Select>
@@ -75,16 +71,15 @@ const id = () => {
 
         <Form.Group className="py-2 px-3" controlId="combate">
           <Form.Label> Tipo de combate </Form.Label>
-          <Form.Select {...register('combate', geralValidator.nome)}>
+          <Form.Select isInvalid={errors.combate} {...register('combate', geralValidator.notNull)}>
+          { errors.combate && <p className='mt-1 text-light'> {errors.combate.message} </p> }
           <option value=""> Selecione o tipo de combate </option>
                 <option key={"fisico"} value={"Físico"}> Físico </option>
                 <option key={"magico"} value={"Mágico"}> Mágico </option>
                 <option key={"furtivo"} value={"Furtivo"}> Furtivo </option>
           </Form.Select>
         </Form.Group>
-
-      
-
+    
         <div className='text-center me-2 py-3'>
         <Button style={styleForm.buttonSave}type="button" className='me-2' onClick={handleSubmit(salvar)}>
           <RiFilePaperFill/>
