@@ -26,13 +26,11 @@ const id = () => {
 
     if(query.id) { 
       const personagens = JSON.parse(window.localStorage.getItem('personagens'))
-      const classe = personagens[query.id]
-      for(let campo in classe) {
-          console.log(campo, classe);
-          setValue(campo, classe[campo])
+      const personagem = personagens[query.id]
+      for(let campo in personagem) { 
+        setValue(campo, personagem[campo]) 
       }
   }
-    
   }, [query.id]);
 
   function salvar(dados) {

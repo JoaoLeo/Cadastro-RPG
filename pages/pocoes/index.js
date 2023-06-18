@@ -38,7 +38,6 @@ const index = () => {
                 Criar poção
             </Button>
             </Link>
-
                 {pocoes.map((p,index) =>(
                      <Card style={styleCard}>     
                      <Card.Header as="h5">   {p.tipo}</Card.Header>
@@ -52,10 +51,8 @@ const index = () => {
                        </Card.Body>
                       </Card>
                 ))}
-
             </Container>
         </>
-
     )
 }
 

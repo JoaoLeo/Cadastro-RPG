@@ -27,6 +27,7 @@ const index = () => {
         setpoderes(itens)
     }
     }
+
   return (
     <> 
     <GlobalStyle/>
@@ -49,7 +50,7 @@ const index = () => {
                         </Link>
                         <TbTrashFilled size={25} onClick={() => excluir(index)} className="text-danger me-2"/>
                       </Card.Body>
-                     </Card>
+                </Card>
                 ))}
             </Container>
     </>

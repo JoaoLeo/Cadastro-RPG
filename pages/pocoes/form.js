@@ -16,7 +16,6 @@ const formPocoes = () => {
   const { register, handleSubmit, formState : { errors }, setValue } = useForm();
 
   function salvar(dados) {
-    console.log(dados);
     const pocoes = JSON.parse(window.localStorage.getItem('pocoes')) || []
     pocoes.unshift(dados)
     window.localStorage.setItem('pocoes', JSON.stringify(pocoes))
@@ -25,6 +24,7 @@ const formPocoes = () => {
   function handleChange(event){
     setValue(event.target.name, (mask(event.target.value, event.target.getAttribute("mask"))))
   }
+
   return (
     <> 
     <GlobalStyle/>
@@ -41,8 +41,7 @@ const formPocoes = () => {
           <option key={3} value={"Sonífera"}> Sonífera </option>           
           </Form.Select>
         </Form.Group>
-
-       
+      
         <Form.Group className="py-2 px-3" controlId="qtd">
           <Form.Label>Quantidade</Form.Label>
           <Form.Control type="number" placeholder="Digite a quantidade de poções que deseja " {...register('qtd', geralValidator.notNull)}/>
@@ -56,9 +55,7 @@ const formPocoes = () => {
                 <option key={"mediano"} value={"Mediano"}> Mediano </option>
                 <option key={"mortal"} value={"Mortal"}> Mortal </option>
           </Form.Select>
-        </Form.Group>
-
-      
+        </Form.Group>      
 
         <div className='text-center me-2 py-3'>
         <Button style={styleForm.buttonSave}type="button" className='me-2' onClick={handleSubmit(salvar)}>

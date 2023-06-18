@@ -23,7 +23,6 @@ const formJogadores = () => {
   }, []);
 
   function salvar(dados) {
-    console.log(dados);
     const jogadores = JSON.parse(window.localStorage.getItem('jogadores')) || []
     jogadores.unshift(dados)
     window.localStorage.setItem('jogadores', JSON.stringify(jogadores))

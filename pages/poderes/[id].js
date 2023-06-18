@@ -25,14 +25,12 @@ const id = () => {
       for(let campo in poder) {
           setValue(campo, poder[campo])
       }    
-  }
-    
+  } 
   }, [query.id]);
 
   const handleRangeChange = (event) => { setValorDano(event.target.value); };
 
   function salvar(dados) {
-    console.log(dados);
     const poderes = JSON.parse(window.localStorage.getItem('poderes')) || []
     poderes.splice(query.id, 1, dados)
     window.localStorage.setItem('poderes', JSON.stringify(poderes))
@@ -41,6 +39,7 @@ const id = () => {
   function handleChange(event){
     setValue(event.target.name, (mask(event.target.value, event.target.getAttribute("mask"))))
   }
+
   return (
     <> 
     <GlobalStyle/>
@@ -53,8 +52,7 @@ const id = () => {
           <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('descricao', geralValidator.notNull)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
-
-       
+      
         <Form.Group className="py-2 px-3" controlId="elemento">
           <Form.Label> Elemento </Form.Label>
           <Form.Select {...register('elemento', geralValidator.notNull)}>
@@ -76,9 +74,7 @@ const id = () => {
           max={100}
           variant="danger"
           >
-
-          </Form.Range>
-          
+          </Form.Range>          
         </Form.Group>
 
         <div className='text-center me-2 py-3'>

@@ -22,18 +22,14 @@ const id = () => {
     setclasses(data); 
     if(query.id) { 
       const jogadores = JSON.parse(window.localStorage.getItem('jogadores'))
-      const classe = jogadores[query.id]
-      for(let campo in classe) {
-          console.log(campo, classe);
-          setValue(campo, classe[campo])
+      const jogador = jogadores[query.id]
+      for(let campo in jogador) {
+          setValue(campo, jogador[campo])
       }
-      //setValue("classeFav", classe[3])
-  }
-    
+    }   
   }, [query.id]);
 
   function salvar(dados) {
-    console.log(dados);
     const jogadores = JSON.parse(window.localStorage.getItem('jogadores')) || []
     jogadores.splice(query.id, 1, dados)
     window.localStorage.setItem('jogadores', JSON.stringify(jogadores))
@@ -95,8 +91,7 @@ const id = () => {
                   {classes.map((c,i) => (
                   <option key={i} value={c.value}> {c.nome} </option>
                   
-          ))}
-          
+          ))}         
           </Form.Select>
         </Form.Group>
     

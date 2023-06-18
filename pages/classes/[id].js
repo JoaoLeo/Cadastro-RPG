@@ -23,12 +23,10 @@ const id = () => {
       const classes = JSON.parse(window.localStorage.getItem('classes'))
       const classe = classes[query.id]
       for(let campo in classe) { setValue(campo, classe[campo])}
-  }
-    
+  }   
   }, [query.id]);
 
   function salvar(dados) {
-    console.log(dados);
     const classes = JSON.parse(window.localStorage.getItem('classes')) || []
     classes.splice(query.id, 1, dados)
     window.localStorage.setItem('classes', JSON.stringify(classes))
@@ -37,6 +35,7 @@ const id = () => {
   function handleChange(event){
     setValue(event.target.name, (mask(event.target.value, event.target.getAttribute("mask"))))
   }
+
   return (
     <> 
     <GlobalStyle/>
@@ -49,8 +48,7 @@ const id = () => {
           <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o nome" {...register('nome', geralValidator.notNull)}/>
           { errors.nome && <p className='mt-1 text-light'> {errors.nome.message} </p> } 
         </Form.Group>
-
-       
+      
         <Form.Group className="py-2 px-3" controlId="poder">
           <Form.Label> Poder Principal </Form.Label>
           <Form.Select isInvalid={errors.poder} {...register('poder',geralValidator.notNull)}>

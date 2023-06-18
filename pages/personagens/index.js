@@ -39,7 +39,7 @@ const index = () => {
             </Button>
             </Link>
 
-                {personagens.map((p,index) =>(
+              {personagens.map((p,index) =>(
 		           <Card style={styleCard}>     
                    <Card.Header as="h5">  {p.nome} </Card.Header>
                    <Card.Body>
@@ -58,11 +58,9 @@ const index = () => {
                      <TbTrashFilled size={25} onClick={() => excluir(index)} className="text-danger me-2"/> 
                      </Card.Body>
                     </Card> 		          
-                      ))}
-
+              ))}
             </Container>
         </>
-
     )
 }
 

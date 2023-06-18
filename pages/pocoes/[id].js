@@ -20,7 +20,6 @@ const id = () => {
       const pocoes = JSON.parse(window.localStorage.getItem('pocoes'))
       const pocao = pocoes[query.id]
       for(let campo in pocao) {
-        console.log(campo, pocao);
           setValue(campo, pocao[campo])
       }
   }
@@ -28,7 +27,6 @@ const id = () => {
   }, [query.id]);
 
   function salvar(dados) {
-    console.log(dados);
     const pocoes = JSON.parse(window.localStorage.getItem('pocoes')) || []
     pocoes.splice(query.id, 1, dados)
     window.localStorage.setItem('pocoes', JSON.stringify(pocoes))
@@ -69,8 +67,6 @@ const id = () => {
                 <option key={"mortal"} value={"Mortal"}> Mortal </option>
           </Form.Select>
         </Form.Group>
-
-      
 
         <div className='text-center me-2 py-3'>
         <Button style={styleForm.buttonSave}type="button" className='me-2' onClick={handleSubmit(salvar)}>

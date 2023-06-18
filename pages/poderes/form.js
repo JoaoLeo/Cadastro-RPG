@@ -25,7 +25,6 @@ const formPoderes = () => {
   const handleRangeChange = (event) => { setValorDano(event.target.value); };
 
   function salvar(dados) {
-    console.log(dados);
     const poderes = JSON.parse(window.localStorage.getItem('poderes')) || []
     poderes.unshift(dados)
     window.localStorage.setItem('poderes', JSON.stringify(poderes))
@@ -34,6 +33,7 @@ const formPoderes = () => {
   function handleChange(event){
     setValue(event.target.name, (mask(event.target.value, event.target.getAttribute("mask"))))
   }
+
   return (
     <> 
     <GlobalStyle/>
@@ -46,7 +46,6 @@ const formPoderes = () => {
           <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o a descrição do poder" {...register('descricao', geralValidator.nome)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
-
        
         <Form.Group className="py-2 px-3" controlId="elemento">
           <Form.Label> Elemento </Form.Label>
@@ -59,6 +58,7 @@ const formPoderes = () => {
                 <option key={"veneno"} value={"Veneno"}> Veneno </option>
           </Form.Select>
           </Form.Group>
+
         <Form.Group className="py-2 px-3" controlId="dano">
           <Form.Label> Nível de dano: </Form.Label>
           <Form.Text style={{color: '#8B0000', fontSize:'22px', fontWeight: 'bolder'}}> {valorDano} </Form.Text>
@@ -69,14 +69,8 @@ const formPoderes = () => {
           max={100}
           variant="danger"
           >
-
-          </Form.Range>
-          
+          </Form.Range>          
         </Form.Group>
-
-        
-
-      
 
         <div className='text-center me-2 py-3'>
         <Button style={styleForm.buttonSave}type="button" className='me-2' onClick={handleSubmit(salvar)}>
