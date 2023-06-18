@@ -44,18 +44,21 @@ const id = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="tipo">
           <Form.Label> Escolha o tipo da poção </Form.Label>
-          <Form.Select {...register('tipo',geralValidator.notNull)}>
+          <Form.Select {...register('tipo', geralValidator.notNull)}>
           <option value=""> Selecione o tipo da poção </option>
           <option key={1} value={"Envenenamento"}> Envenenamento </option>   
           <option key={2} value={"Paralizante"}> Paralizante </option>     
           <option key={3} value={"Sonífera"}> Sonífera </option>           
           </Form.Select>
         </Form.Group>
-
-       
+      
         <Form.Group className="py-2 px-3" controlId="qtd">
           <Form.Label>Quantidade</Form.Label>
-          <Form.Control type="number" placeholder="Digite a quantidade de poções que deseja " {...register('qtd', geralValidator.notNull)}/>
+          <Form.Control type="number" 
+          placeholder="Digite a quantidade de poções que deseja " 
+          {...register('qtd', geralValidator.qtd)} 
+          isInvalid={errors.qtd}/>
+           { errors.qtd && <p className='mt-1 text-light'> {errors.qtd.message} </p> }
         </Form.Group>
         
         <Form.Group className="py-2 px-3" controlId="perigo">
@@ -66,7 +69,7 @@ const id = () => {
                 <option key={"mediano"} value={"Mediano"}> Mediano </option>
                 <option key={"mortal"} value={"Mortal"}> Mortal </option>
           </Form.Select>
-        </Form.Group>
+        </Form.Group>      
 
         <div className='text-center me-2 py-3'>
         <Button style={styleForm.buttonSave}type="button" className='me-2' onClick={handleSubmit(salvar)}>

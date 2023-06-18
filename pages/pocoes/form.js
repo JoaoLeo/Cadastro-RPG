@@ -44,7 +44,11 @@ const formPocoes = () => {
       
         <Form.Group className="py-2 px-3" controlId="qtd">
           <Form.Label>Quantidade</Form.Label>
-          <Form.Control type="number" placeholder="Digite a quantidade de poções que deseja " {...register('qtd', geralValidator.notNull)}/>
+          <Form.Control type="number" 
+          placeholder="Digite a quantidade de poções que deseja " 
+          {...register('qtd', geralValidator.qtd)} 
+          isInvalid={errors.qtd}/>
+           { errors.qtd && <p className='mt-1 text-light'> {errors.qtd.message} </p> }
         </Form.Group>
         
         <Form.Group className="py-2 px-3" controlId="perigo">
