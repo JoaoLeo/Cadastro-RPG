@@ -43,13 +43,13 @@ const formPoderes = () => {
     <Form>
         <Form.Group className="py-2 px-3" controlId="descricao">
           <Form.Label>Descrição</Form.Label>
-          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o a descrição do poder" {...register('descricao', geralValidator.nome)}/>
+          <Form.Control type="text" isInvalid={errors.nome} placeholder="Digite o a descrição do poder" {...register('descricao', geralValidator.notNull)}/>
           { errors.nome && <p className='mt-1 text-danger'> {errors.nome.message} </p> } 
         </Form.Group>
        
         <Form.Group className="py-2 px-3" controlId="elemento">
           <Form.Label> Elemento </Form.Label>
-          <Form.Select {...register('elemento', geralValidator.nome)}>
+          <Form.Select {...register('elemento', geralValidator.notNull)}>
           <option value=""> Selecione o elemento que irá compor o poder </option>
                 <option key={"fogo"} value={"Fogo"}> Fogo </option>
                 <option key={"agua"} value={"Água"}> Água </option>
