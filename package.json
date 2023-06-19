@@ -1,10 +1,13 @@
 {
   "name": "cadastro-rpg",
   "version": "0.1.0",
+  "homepage": "https://JoaoLeo.github.io/Cadastro-RPG",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,5 +21,8 @@
     "react-icons": "^4.9.0",
     "remask": "^1.2.2",
     "styled-components": "^5.3.11"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
