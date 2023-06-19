@@ -9,16 +9,12 @@ const ModalContato = () => {
   const handleShow = () => setShow(true);
   let [contatos, setContatos] = useState({
     github: "",
-    email: "",
-    telefone: ""
   })
   return (
     <>
       <div>
         <span onClick={() => {
           contatos.github = <a href="https://github.com/JoaoLeo" target="_blank"> JoaoLeo </a>
-          contatos.email = "joaoleonardo9921@gmail.com"
-          contatos.telefone = "(61)99889178"
           setContatos(contatos)
           handleShow()
         }}>
@@ -33,8 +29,7 @@ const ModalContato = () => {
           </Modal.Header>
           <Modal.Body>
             <h5> Github: {contatos.github} </h5>
-            <h5> Email: {contatos.email} </h5>
-            <h5> Telefone: {contatos.telefone} </h5>
+            <p>Projeto final da matéria de construção de frontend que consiste em cruds no localstorage de registros baseados em jogos de RPG como: Classe, Jogador, Personagem, Poderes e Poções.</p>
           </Modal.Body>
         </Modal>
       </div>
