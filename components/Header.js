@@ -4,6 +4,7 @@ import { GiDiceTwentyFacesOne, GiConsoleController , GiCelebrationFire, GiMagicP
 import { ImBooks } from 'react-icons/im'
 import { FaHatWizard } from 'react-icons/fa'
 import ModalContato from './ModalContato';
+import Link from 'next/link';
 const headerStyle = {
     backgroundColor: "#695757",
     fontSize: "25px"
@@ -14,13 +15,13 @@ const Header = () => {
     <> 
     <Navbar style={headerStyle} className='mb-4'>
     <Container>
-      <Navbar.Brand style={headerStyle} href="/"> <GiDiceTwentyFacesOne/> Cadastro-RPG </Navbar.Brand>   
+      <Navbar.Brand style={headerStyle} as={Link} href="/"> <GiDiceTwentyFacesOne/> Cadastro-RPG </Navbar.Brand>   
       <Nav className="me-auto">
-      <Nav.Link href="/classes"> <ImBooks/>  Classes </Nav.Link>
-      <Nav.Link href="/jogadores"> <GiConsoleController/> Jogadores</Nav.Link>
-        <Nav.Link href="/personagens"> <FaHatWizard/>   Personagens </Nav.Link>
-        <Nav.Link href="/poderes"> <GiCelebrationFire/>  Poderes </Nav.Link>
-        <Nav.Link href="/pocoes"> <GiMagicPotion/>  Poções </Nav.Link>
+      <Nav.Link as={Link} href="/classes"> <ImBooks/>  Classes </Nav.Link>
+      <Nav.Link as={Link} href="/jogadores"> <GiConsoleController/> Jogadores</Nav.Link>
+        <Nav.Link as={Link} href="/personagens"> <FaHatWizard/>   Personagens </Nav.Link>
+        <Nav.Link as={Link} href="/poderes"> <GiCelebrationFire/>  Poderes </Nav.Link>
+        <Nav.Link as={Link} href="/pocoes"> <GiMagicPotion/>  Poções </Nav.Link>
         </Nav>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end"> 
